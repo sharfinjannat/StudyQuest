@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Quest - University Question Bank Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Glass Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2 style="font-family: 'Outfit', sans-serif; font-weight: 700; color: black;">Study Quest</h2>
+            <p>University Question Bank</p>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-link active" onclick="showSection('student')">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+            <a href="#" class="nav-link" onclick="showSection('admin')">
+                <i class="fas fa-user-shield"></i>
+                Admin
+            </a>
+            <a href="#" class="nav-link" onclick="showSection('upload')">
+                <i class="fas fa-upload"></i>
+                Upload
+            </a>
+            <a href="#" class="nav-link" onclick="showSection('bookmarks')">
+                <i class="fas fa-bookmark"></i>
+                Bookmarks
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Student View -->
+        <div id="app-view-student">
+            <!-- Student Home Section -->
+            <section id="student-section" class="content-section active">
+            <!-- Hero -->
+            <div class="hero">
+                <h1 class="hero-title" style="font-family: 'Outfit', sans-serif; font-weight: 700; color: black;">Study Quest</h1>
+                <p class="hero-subtitle">Your Gateway to Academic Excellence</p>
+            </div>
+            
+            <!-- Hero Section - Explore Departments -->
+            <div class="hero-explore">
+                <h1 class="hero-title">Explore the departments of <span class="highlight">CSTU</span></h1>
+                <p class="hero-subtitle">Access the largest open-source question bank collection.</p>
+            </div>
+
+            <!-- Department Cards -->
+            <div class="departments-grid">
+                <div class="department-card glass-card" onclick="selectDepartment('CSE')">
+                    <div class="dept-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>CSE</h3>
+                    <p>Computer Science & Engineering</p>
+                </div>
+                <div class="department-card glass-card" onclick="selectDepartment('ICT')">
+                    <div class="dept-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>ICT</h3>
+                    <p>Information & Communication Technology</p>
+                </div>
+                <div class="department-card glass-card" onclick="selectDepartment('DBA')">
+                    <div class="dept-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>DBA</h3>
+                    <p>Department of Business Administration</p>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="features-section">
+                <h2 class="features-title">Why Choose Study Quest?</h2>
+                <div class="features-grid">
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Massive Collection</h3>
+                        <p>Access all question papers from all courses including CTs and Finals.</p>
+                    </div>
+                    
+                    <div class="feature-card glass-card">
+                        <div class="feature-badge">
+                            <span class="verified-badge">Verified</span>
+                        </div>
+                        <div class="feature-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>Verification</h3>
+                        <p>All papers are verified to ensure quality before approval.</p>
+                    </div>
+                    
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-upload"></i>
+                        </div>
+                        <h3>Contribution</h3>
+                        <p>Students can contribute by uploading their own collection.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Section -->
+            <footer class="main-footer">
+                <div class="footer-content">
+                    <div class="footer-left">
+                        <p>© 2026 Study Quest. All rights reserved.</p>
+                    </div>
+                    <div class="footer-right">
+                        <div class="feedback-form">
+                            <input type="text" placeholder="Send us your feedback..." class="feedback-input">
+                            <button class="feedback-btn">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <!-- Semester Section -->
+        <section id="semester-section" class="content-section hidden">
+            <div class="semester-header">
+                <div class="breadcrumb">
+                    <span class="breadcrumb-item" onclick="goToHome()">Home</span>
+                    <i class="fas fa-chevron-right breadcrumb-separator"></i>
+                    <span class="breadcrumb-item" onclick="goToDepartments()">Departments</span>
+                    <i class="fas fa-chevron-right breadcrumb-separator"></i>
+                    <span class="breadcrumb-item active" id="current-department">CSE</span>
+                </div>
+                <div class="semester-title-section">
+                    <h2 class="semester-title" id="semester-title">Computer Science (CSE)</h2>
+                    <p class="semester-subtitle">Select a semester to access question papers and notes.</p>
+                </div>
+            </div>
+            
+            <div class="years-grid">
+                <!-- 1st Year -->
+                <div class="year-group">
+                    <div class="year-label">1st Year</div>
+                    <div class="year-semesters">
+                        <div class="semester-card glass-card" onclick="selectSemester(1)">
+                            <div class="semester-content">
+                                <div class="semester-left">
+                                    <div class="semester-number">1</div>
+                                </div>
+                                <div class="semester-right">
+                                    <h4>First Semester</h4>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="semester-card glass-card" onclick="selectSemester(2)">
+                            <div class="semester-content">
+                                <div class="semester-left">
+                                    <div class="semester-number">2</div>
+                                </div>
+                                <div class="semester-right">
+                                    <h4>Second Semester</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2nd Year -->
+                <div class="year-group">
+                    <div class="year-label">2nd Year</div>
+                    <div class="year-semesters">
+                        <div class="semester-card glass-card" onclick="selectSemester(3)">
+                            <div class="semester-content">
+                                <div class="semester-left">
+                                    <div class="semester-number">3</div>
+                                </div>
+                                <div class="semester-right">
+                                    <h4>Third Semester</h4>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="semester-card glass-card" onclick="selectSemester(4)">
+                            <div class="semester-content">
+                                <div class="semester-left">
+                                    <div class="semester-number">4</div>
+                                </div>
+                                <div class="semester-right">
+                                    <h4>Fourth Semester</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 3rd Year -->
+                <div class="year-group">
+                    <div class="year-label">3rd Year</div>
+                    <div class="year-semesters">
+                        <div class="semester-card glass-card" onclick="selectSemester(5)">
+                            <div class="semester-content">
+                                <div class="semester-left">
+                                    <div class="semester-number">5</div>
+                                </div>
+                                <div class="semester-right">
+                                    <h4>Fifth Semester</h4>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="semester-card glass-card" onclick="selectSemester(6)">
+                            <div class="semester-content">
+                                <div class="semester-left">
+                                    <div class="semester-number">6</div>
+                                </div>
+                                <div class="semester-right">
+                                    <h4>Sixth Semester</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 4th Year -->
+                <div class="year-group">
+                    <div class="year-label">4th Year</div>
+                    <div class="year-semesters">
+                        <div class="semester-card glass-card" onclick="selectSemester(7)">
+                            <div class="semester-content">
+                                <div class="semester-left">
+                                    <div class="semester-number">7</div>
+                                </div>
+                                <div class="semester-right">
+                                    <h4>Seventh Semester</h4>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="semester-card glass-card" onclick="selectSemester(8)">
+                            <div class="semester-content">
+                                <div class="semester-left">
+                                    <div class="semester-number">8</div>
+                                </div>
+                                <div class="semester-right">
+                                    <h4>Eighth Semester</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upload Section -->
+        <section id="upload-section" class="content-section">
+            <div class="section-header">
+                <h2>Upload Questions</h2>
+                <p>Share your question papers with the community</p>
+            </div>
+            <div class="upload-container glass-card">
+                <div class="upload-area">
+                    <i class="fas fa-cloud-upload-alt fa-4x"></i>
+                    <h3>Drop your files here</h3>
+                    <p>or click to browse</p>
+                    <input type="file" id="fileInput" multiple accept=".pdf,.doc,.docx,.jpg,.png" style="display: none;">
+                    <button class="btn-primary" onclick="document.getElementById('fileInput').click()">
+                        <i class="fas fa-folder-open"></i>
+                        Choose Files
+                    </button>
+                </div>
+                <div class="upload-info">
+                    <h4>Upload Guidelines:</h4>
+                    <ul>
+                        <li>Supported formats: PDF, DOC, DOCX, JPG, PNG</li>
+                        <li>Maximum file size: 10MB per file</li>
+                        <li>Ensure papers are clear and readable</li>
+                        <li>Include department and semester information</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bookmarks Section -->
+        <section id="bookmarks-section" class="content-section">
+            <div class="section-header">
+                <h2>Bookmarks</h2>
+                <p>Your saved papers and resources</p>
+            </div>
+            <div class="content-placeholder">
+                <i class="fas fa-bookmark fa-3x"></i>
+                <h3>No Bookmarks Yet</h3>
+                <p>Start bookmarking your favorite papers</p>
+            </div>
+        </div>
+        
+    </main>
+
+    <!-- Admin View - Moved outside main content -->
+    <div id="app-view-admin" class="hidden">
+            <!-- Full Page Admin Layout -->
+            <div class="admin-page-container">
+                <!-- Admin Sidebar -->
+                <aside class="admin-sidebar">
+                    <div class="admin-sidebar-header">
+                        <h2>Study Quest Admin</h2>
+                    </div>
+                    <nav class="admin-sidebar-nav">
+                        <a href="#" class="admin-nav-link" onclick="goToHome()">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Home
+                        </a>
+                        <a href="#" class="admin-nav-link active" onclick="showAdminSection('dashboard')">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                        <a href="#" class="admin-nav-link" onclick="showAdminSection('departments')">
+                            <i class="fas fa-building"></i>
+                            Departments
+                        </a>
+                        <a href="#" class="admin-nav-link" onclick="showAdminSection('semesters')">
+                            <i class="fas fa-calendar-alt"></i>
+                            Semesters
+                        </a>
+                        <a href="#" class="admin-nav-link" onclick="showAdminSection('courses')">
+                            <i class="fas fa-book"></i>
+                            Courses
+                        </a>
+                        <a href="#" class="admin-nav-link" onclick="showAdminSection('papers')">
+                            <i class="fas fa-file-alt"></i>
+                            Question Papers
+                        </a>
+                        <a href="#" class="admin-nav-link" onclick="showAdminSection('pending')">
+                            <i class="fas fa-clock"></i>
+                            Pending Approvals
+                        </a>
+                        <a href="#" class="admin-nav-link" onclick="showAdminSection('feedbacks')">
+                            <i class="fas fa-comment"></i>
+                            Feedbacks
+                        </a>
+                    </nav>
+                </aside>
+
+                <!-- Admin Main Content -->
+                <main class="admin-main-content">
+                    <!-- Dashboard Section -->
+                    <section id="admin-dashboard" class="admin-section active">
+                        <div class="admin-header">
+                            <h1>Dashboard</h1>
+                            <p>Admin overview and statistics</p>
+                        </div>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-number" id="total-users">0</div>
+                                <div class="stat-label">Total Users</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="stat-number" id="total-papers">0</div>
+                                <div class="stat-label">Total Papers</div>
+                            </div>
+                            <div class="stat-card pending">
+                                <div class="stat-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="stat-number" id="pending-approvals">0</div>
+                                <div class="stat-label">Pending Approvals</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="stat-number" id="unread-feedback">0</div>
+                                <div class="stat-label">Unread Feedback</div>
+                            </div>
+                        </div>
+
+                        <!-- Manage Departments -->
+                        <div class="admin-management-section">
+                            <div class="section-header">
+                                <h2>Manage Departments</h2>
+                                <button class="btn-primary">
+                                    <i class="fas fa-plus"></i>
+                                    Add New Department
+                                </button>
+                            </div>
+                            <div class="table-container">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Department Name</th>
+                                            <th>Department Code</th>
+                                            <th>Total Courses</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Computer Science & Engineering</td>
+                                            <td>CSE</td>
+                                            <td>45</td>
+                                            <td><span class="status-badge active">ACTIVE</span></td>
+                                            <td>
+                                                <button class="btn-edit">
+                                                    <i class="fas fa-edit"></i>
+                                                    Edit
+                                                </button>
+                                                <button class="btn-delete">
+                                                    <i class="fas fa-trash"></i>
+                                                    Delete
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Information & Communication Technology</td>
+                                            <td>ICT</td>
+                                            <td>38</td>
+                                            <td><span class="status-badge active">ACTIVE</span></td>
+                                            <td>
+                                                <button class="btn-edit">
+                                                    <i class="fas fa-edit"></i>
+                                                    Edit
+                                                </button>
+                                                <button class="btn-delete">
+                                                    <i class="fas fa-trash"></i>
+                                                    Delete
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Department of Business Administration</td>
+                                            <td>DBA</td>
+                                            <td>32</td>
+                                            <td><span class="status-badge active">ACTIVE</span></td>
+                                            <td>
+                                                <button class="btn-edit">
+                                                    <i class="fas fa-edit"></i>
+                                                    Edit
+                                                </button>
+                                                <button class="btn-delete">
+                                                    <i class="fas fa-trash"></i>
+                                                    Delete
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Manage Pending Approvals -->
+                        <div class="admin-management-section">
+                            <div class="section-header">
+                                <h2>Manage Pending Approvals</h2>
+                                <button class="btn-primary">
+                                    <i class="fas fa-plus"></i>
+                                    Review All
+                                </button>
+                            </div>
+                            <div class="content-placeholder">
+                                <i class="fas fa-clock fa-3x"></i>
+                                <h3>Pending Approvals</h3>
+                                <p>Items pending approval will appear here</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Other admin sections will be added here -->
+                    <section id="admin-departments" class="admin-section hidden">
+                        <div class="admin-header">
+                            <h1>Manage Departments</h1>
+                            <p>Add and manage academic departments</p>
+                        </div>
+                        <div class="content-placeholder">
+                            <i class="fas fa-building fa-3x"></i>
+                            <h3>Department Management</h3>
+                            <p>Departments will be loaded from backend</p>
+                        </div>
+                    </section>
+
+                    <section id="admin-users" class="admin-section hidden">
+                        <div class="admin-header">
+                            <h1>User Management</h1>
+                            <p>Manage user accounts and permissions</p>
+                        </div>
+                        <div class="content-placeholder">
+                            <i class="fas fa-users fa-3x"></i>
+                            <h3>User Management</h3>
+                            <p>Users will be loaded from backend</p>
+                        </div>
+                    </section>
+
+                    <section id="admin-feedbacks" class="admin-section hidden">
+                        <div class="admin-header">
+                            <h1>Feedbacks</h1>
+                            <p>View and manage user feedback</p>
+                        </div>
+                        <div class="content-placeholder">
+                            <i class="fas fa-comment fa-3x"></i>
+                            <h3>Feedback Management</h3>
+                            <p>Feedbacks will be loaded from backend</p>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </main>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
