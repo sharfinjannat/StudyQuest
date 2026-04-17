@@ -150,3 +150,5 @@ The server will start on `http://localhost:5000`
 ## License
 
 This project is licensed under the MIT License.
+<img width="1873" height="882" alt="image" src="https://github.com/user-attachments/assets/87ef6e56-99bd-45ce-8f0f-25141b49aeea" />
+
