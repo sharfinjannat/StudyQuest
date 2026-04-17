@@ -23,6 +23,9 @@ app.use(express.json());
 // Serve static files from uploads directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Serve static files from frontend directory
+app.use(express.static(path.join(__dirname, 'frontend')));
+
 // Ensure uploads directory exists
 const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
@@ -529,6 +532,11 @@ app.delete('/api/papers/:id', async (req, res) => {
         console.error('Error deleting paper:', error);
         res.status(500).json({ message: 'Server error', error: error.message });
     }
+});
+
+// Serve frontend for all non-API routes
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
 });
 
 // Start Server
