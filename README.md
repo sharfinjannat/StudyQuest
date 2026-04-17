@@ -2,6 +2,10 @@
 
 A Node.js backend for the StudyQuest application with MongoDB database.
 
+## Frontend Preview
+
+![StudyQuest Frontend](frontend-preview.png)
+
 ## Features
 
 - Department and Semester Management
